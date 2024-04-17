@@ -1,0 +1,15 @@
+<div>
+  <section>
+    <!-- TODO: Show messages history -->
+  </section>
+
+  <form (ngSubmit)="emitMessage(txtMessageInput.value)">
+    <input
+      type="text"
+      placeholder="Write your message"
+      #txtMessageInput
+    >
+    <button type="submit">Send Message</button>
+  </form>
+
+</div>

@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { ChatbotComponent } from '../shared/chatbot/chatbot.component';
 
 @Component({
   standalone: true,
-  imports: [],
+  imports: [ChatbotComponent],
   templateUrl: './business-layout.component.html',
   styles: ``
 })
