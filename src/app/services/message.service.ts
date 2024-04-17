@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, effect, inject, signal } from '@angular/core';
 import { Message, Role, UserResponse } from '../interfaces/request-response.interface';
 import { HttpClient } from '@angular/common/http';
 import { MessageSent } from '../interfaces/request.interface';
@@ -12,7 +12,10 @@ export class MessageService {
 
   private readonly baseUrl = environment.base_url;
 
-  private messagesHistory: UserResponse[] = [];
+  public messageHistorySignal = signal<UserResponse[]>([]);
+  public historyChangeEffect = effect(() => {
+    console.log(this.messageHistorySignal());
+  })
 
   onMessageSent(userMessage: MessageSent) {
 
@@ -33,12 +36,17 @@ export class MessageService {
 
     const body = userMessage;
 
-    this.messagesHistory.push(newUserMessage);
+    this.messageHistorySignal.update(value => {
+      value.push(newUserMessage);
+      return [...value];
+    });
 
     this.httpClient.post<UserResponse>(`${this.baseUrl}/chat`, body)
       .subscribe(resp => {
-        this.messagesHistory.push(resp);
+        this.messageHistorySignal.update(value => {
+          value.push(resp);
+          return [...value];
+        });
       })
-
   }
 }
