@@ -3,9 +3,9 @@ import { Component } from '@angular/core';
 @Component({
   standalone: true,
   imports: [],
-  templateUrl: './field.component.html',
+  templateUrl: './business.component.html',
   styles: ``
 })
-export default class FieldComponent {
+export default class BusinessComponent {
 
 }
