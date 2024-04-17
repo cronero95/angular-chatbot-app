@@ -1,7 +1,9 @@
 <div>
-  <section>
-    <!-- TODO: Show messages history -->
-  </section>
+  <div>
+    @for (message of messageHistory(); track $index) {
+      <p>{{message.message.content}} - {{message.time.hour}}:{{message.time.minute}}</p>
+    }
+  </div>
 
   <form (ngSubmit)="sendMessage(txtMessageInput.value)">
     <input
