@@ -1,7 +1,8 @@
-import { Component, WritableSignal, output, signal } from '@angular/core';
-import { MessageSent } from '../../interfaces/request.interface';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MessageService } from '../../services/message.service';
+import { MessageSent } from '../../interfaces/request.interface';
 
 @Component({
   selector: 'shared-chatbot',
@@ -14,18 +15,16 @@ import { FormsModule } from '@angular/forms';
   styles: ``
 })
 export class ChatbotComponent {
-  public onSendMessage = output<WritableSignal<MessageSent>>();
 
-  public newMessage = signal<MessageSent>(
-    {
-      content: '',
-    }
-  );
+  private readonly messageService = inject(MessageService);
 
-  emitMessage(message: string): void {
-    this.newMessage.set({ content: message });
-    this.onSendMessage.emit(this.newMessage);
-    console.log(this.newMessage());
+  sendMessage(message: string): void {
+
+    const messageSent: MessageSent = {
+      content: message,
+    };
+
+    this.messageService.onMessageSent(messageSent);
   }
 
 }
