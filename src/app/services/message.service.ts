@@ -13,9 +13,17 @@ export class MessageService {
   private readonly baseUrl = environment.base_url;
 
   public messageHistorySignal = signal<UserResponse[]>([]);
+
   public historyChangeEffect = effect(() => {
+    localStorage.setItem('history', JSON.stringify(this.messageHistorySignal()));
     console.log(this.messageHistorySignal());
   })
+
+  constructor() {
+    if(!localStorage.getItem('history')) return;
+
+    this.messageHistorySignal.set(JSON.parse(localStorage.getItem('history')!));
+  }
 
   onMessageSent(userMessage: MessageSent) {
 
