@@ -30,4 +30,8 @@ export class ChatbotComponent {
     this.messageService.onMessageSent(messageSent);
   }
 
+  deleteChat(): void {
+    this.messageService.onDeleteChat();
+  }
+
 }

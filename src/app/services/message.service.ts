@@ -57,4 +57,13 @@ export class MessageService {
         });
       })
   }
+
+  onDeleteChat(): void {
+    this.messageHistorySignal.set([]);
+
+    localStorage.removeItem('history');
+
+    this.httpClient.delete(`${this.baseUrl}/chat`)
+      .subscribe();
+  }
 }
