@@ -1,2 +1,16 @@
 <h1>Business Name</h1>
-<shared-chatbot />
+<!-- <shared-chatbot /> -->
+<div class="grid">
+  @for (card of myCards(); track $index) {
+    <div class="col-6">
+      <p-card [header]="card.title">
+        <ng-template pTemplate="header">
+          <img [src]="card.image">
+        </ng-template>
+        <p>
+          {{ card.description }}
+        </p>
+      </p-card>
+    </div>
+  }
+</div>
