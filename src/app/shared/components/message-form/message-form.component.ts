@@ -39,13 +39,11 @@ export class MessageFormComponent {
       content: this.myForm.controls['message'].value,
     };
 
-    //this.messageService.onMessageSent(messageSent);
-    console.log({messageSent});
+    this.messageService.onMessageSent(messageSent);
   }
 
   deleteChat(): void {
-    //this.messageService.onDeleteChat();
-    console.log('Chat deleted');
+    this.messageService.onDeleteChat();
   }
 
   isValidField(field: string): boolean | null {
