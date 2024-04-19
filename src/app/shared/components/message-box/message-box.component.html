@@ -1,1 +1,25 @@
-<p>message-box works!</p>
+<div class="card flex justify-content-center">
+  <p-panel [toggleable]="true">
+
+    <ng-template pTemplate="header">
+      <div class="flex">
+        @if (message!.message.role==='user') {
+          <span class="font-bold">You</span>
+        } @else {
+          <span class="font-bold">{{ message!.message.role }}</span>
+        }
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+      <div class="flex align-items-end">
+        <span class="p-text-secondary">{{ message!.time.hour }}:{{ message!.time.minute }}</span>
+      </div>
+    </ng-template>
+
+    <p>
+        {{ message!.message.content }}
+    </p>
+
+  </p-panel>
+</div>
