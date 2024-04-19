@@ -1,25 +1,20 @@
-<div class="card flex justify-content-center">
-  <p-panel [toggleable]="true">
+<div class="card flex justify-content-center border-2 border-primary-500">
+  <p-card [style]="{ 'width': '400px' }">
 
-    <ng-template pTemplate="header">
-      <div class="flex">
-        @if (message!.message.role==='user') {
-          <span class="font-bold">You</span>
-        } @else {
-          <span class="font-bold">{{ message!.message.role }}</span>
-        }
-      </div>
-    </ng-template>
+  <ng-template pTemplate="header">
+    @if (message!.message.role==='user') {
+      <span class="font-bold">You</span>
+    } @else {
+      <span class="font-bold">Assistant</span>
+    }
+  </ng-template>
 
-    <ng-template pTemplate="footer">
-      <div class="flex align-items-end">
-        <span class="p-text-secondary">{{ message!.time.hour }}:{{ message!.time.minute }}</span>
-      </div>
-    </ng-template>
+  <p class="m-0">
+    {{ message!.message.content }}
+  </p>
+  <p class="m-0 text-right text-xs">
+    {{ message!.time.hour | number:'2.0' }}:{{ message!.time.minute | number:'2.0' }}
+  </p>
 
-    <p>
-        {{ message!.message.content }}
-    </p>
-
-  </p-panel>
+  </p-card>
 </div>

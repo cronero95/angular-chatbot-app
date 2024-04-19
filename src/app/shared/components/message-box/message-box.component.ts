@@ -1,14 +1,16 @@
 import { Component, Input } from '@angular/core';
 
-import { PanelModule } from 'primeng/panel';
+import { CardModule } from 'primeng/card';
 
 import { UserResponse } from '../../../interfaces/request-response.interface';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-message-box',
+  selector: 'shared-message-box',
   standalone: true,
   imports: [
-    PanelModule,
+    CardModule,
+    CommonModule,
   ],
   templateUrl: './message-box.component.html',
   styles: ``

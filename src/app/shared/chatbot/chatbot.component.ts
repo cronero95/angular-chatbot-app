@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { MessageService } from '../../services/message.service';
 
 import { MessageFormComponent } from '../components/message-form/message-form.component';
+import { MessageBoxComponent } from '../components/message-box/message-box.component';
 
 import { UserResponse } from '../../interfaces/request-response.interface';
 
@@ -15,6 +16,7 @@ import { UserResponse } from '../../interfaces/request-response.interface';
     CommonModule,
     FormsModule,
     MessageFormComponent,
+    MessageBoxComponent,
   ],
   templateUrl: './chatbot.component.html',
   styles: ``

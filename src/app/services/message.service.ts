@@ -12,7 +12,24 @@ export class MessageService {
 
   private readonly baseUrl = environment.base_url;
 
-  public messageHistorySignal = signal<UserResponse[]>([]);
+  public messageHistorySignal = signal<UserResponse[]>([
+    {
+      message: {role: Role.User, content: 'hola'},
+      time: {hour: 9, minute: 34},
+    },
+    {
+      message: {role: Role.Assistant, content: 'Hola buenas tardes'},
+      time: {hour: 9, minute: 35},
+    },
+    {
+      message: {role: Role.User, content: 'Quiero alquilar algo'},
+      time: {hour: 10, minute: 9},
+    },
+    {
+      message: {role: Role.Assistant, content: 'Genial, esto es lo que necesita'},
+      time: {hour: 10, minute: 10},
+    },
+  ]);
 
   public historyChangeEffect = effect(() => {
     localStorage.setItem('history', JSON.stringify(this.messageHistorySignal()));
@@ -22,7 +39,7 @@ export class MessageService {
   constructor() {
     if(!localStorage.getItem('history')) return;
 
-    this.messageHistorySignal.set(JSON.parse(localStorage.getItem('history')!));
+    //this.messageHistorySignal.set(JSON.parse(localStorage.getItem('history')!));
   }
 
   onMessageSent(userMessage: MessageSent) {

@@ -1,7 +1,7 @@
 <div>
   <div>
     @for (message of messageHistory(); track $index) {
-      <p>{{message.message.content}} - {{message.time.hour}}:{{message.time.minute}}</p>
+      <shared-message-box [message]="message" />
     }
   </div>
 
