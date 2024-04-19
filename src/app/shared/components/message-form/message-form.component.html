@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col">
+
+    <form [formGroup]="myForm" (ngSubmit)="sendMessage()">
+
+      <div class="card flex justify-content-center">
+        <span class="p-float-label">
+          <textarea
+            id="float-input"
+            rows="5" cols="30"
+            pInputTextarea
+            class="form-control"
+            formControlName="message"
+          ></textarea>
+          <label for="float-input">Ask a question!</label>
+        </span>
+      </div>
+
+      <div class="card flex justify-content-center">
+        <p-button
+          type="submit"
+          label="Send message"
+          icon="pi pi-send"
+          iconPos="right"
+        ></p-button>
+        <p-button
+          (click)="deleteChat()"
+          label="Clean chat"
+          icon="pi pi-eraser"
+          iconPos="right"
+          severity="danger"
+        ></p-button>
+      </div>
+
+    </form>
+
+  </div>
+</div>

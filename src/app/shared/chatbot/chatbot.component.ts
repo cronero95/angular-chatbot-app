@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MessageService } from '../../services/message.service';
 import { MessageSent } from '../../interfaces/request.interface';
 import { UserResponse } from '../../interfaces/request-response.interface';
+import { MessageFormComponent } from '../components/message-form/message-form.component';
 
 @Component({
   selector: 'shared-chatbot',
@@ -11,6 +12,7 @@ import { UserResponse } from '../../interfaces/request-response.interface';
   imports: [
     CommonModule,
     FormsModule,
+    MessageFormComponent,
   ],
   templateUrl: './chatbot.component.html',
   styles: ``

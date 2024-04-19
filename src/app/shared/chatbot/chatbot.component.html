@@ -5,15 +5,6 @@
     }
   </div>
 
-  <form (ngSubmit)="sendMessage(txtMessageInput.value)">
-    <input
-      type="text"
-      placeholder="Write your message"
-      #txtMessageInput
-    >
-    <button type="submit">Send Message</button>
-  </form>
-
-  <button (click)="deleteChat()">Clear chat</button>
+  <shared-message-form />
 
 </div>
