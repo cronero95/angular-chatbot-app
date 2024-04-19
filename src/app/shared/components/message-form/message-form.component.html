@@ -7,12 +7,17 @@
         <span class="p-float-label">
           <textarea
             id="float-input"
-            rows="5" cols="30"
+            rows="3" cols="40"
             pInputTextarea
             class="form-control"
             formControlName="message"
+            [autoResize]="true"
           ></textarea>
-          <label for="float-input">Ask a question!</label>
+          @if (isValidField('message')) {
+            <label for="float-input">{{ getFieldError('message') }}</label>
+          } @else {
+            <label for="float-input">Ask a question!</label>
+          }
         </span>
       </div>
 
@@ -23,6 +28,7 @@
           icon="pi pi-send"
           iconPos="right"
         ></p-button>
+        <p-divider layout="vertical"></p-divider>
         <p-button
           (click)="deleteChat()"
           label="Clean chat"
