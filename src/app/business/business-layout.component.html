@@ -1,9 +1,11 @@
-<h1>Business Name</h1>
-<!-- <shared-chatbot /> -->
-<div class="grid justify-content-around">
-  @for (card of myCards(); track $index) {
-    <div class="col-3">
-      <business-card [cardBody]="card" />
-    </div>
-  }
+<div class="absolute">
+  <h1>San Marcos' courts</h1>
+  <div class="grid justify-content-around">
+    @for (card of myCards(); track $index) {
+      <div class="col-3">
+        <business-card [cardBody]="card" />
+      </div>
+    }
+  </div>
 </div>
+<shared-chatbot class="absolute bottom-0 right-0"/>
