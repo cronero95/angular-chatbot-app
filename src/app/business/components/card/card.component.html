@@ -1,0 +1,8 @@
+<p-card [header]="cardBody?.title" [style]="{ 'height': '570px' }">
+  <ng-template pTemplate="header">
+    <img [src]="cardBody?.image">
+  </ng-template>
+  <p>
+    {{ cardBody?.description }}
+  </p>
+</p-card>

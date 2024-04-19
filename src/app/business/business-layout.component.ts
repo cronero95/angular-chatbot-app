@@ -1,14 +1,18 @@
 import { Component, signal } from '@angular/core';
-import { ChatbotComponent } from '../shared/chatbot/chatbot.component';
-import { CardBody } from '../interfaces/card.interface';
 
 import { CardModule } from 'primeng/card';
+
+import { ChatbotComponent } from '../shared/chatbot/chatbot.component';
+import { CardComponent } from './components/card/card.component';
+
+import { CardBody } from '../interfaces/card.interface';
 
 @Component({
   standalone: true,
   imports: [
     ChatbotComponent,
     CardModule,
+    CardComponent,
   ],
   templateUrl: './business-layout.component.html',
   styles: ``
