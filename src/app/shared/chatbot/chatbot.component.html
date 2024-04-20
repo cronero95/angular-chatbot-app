@@ -1,6 +1,6 @@
 <div class="flex flex-column">
 
-  <div class="max-h-screen surface-200 border-round-lg" [style]="{ 'overflow-y': 'auto' }" #txtChat>
+  <div class="max-h-screen surface-200 border-round-lg" [style]="{ 'overflow-y': 'auto', 'display': 'none' }" #txtChat>
     <div>
       @for (message of messageHistory(); track $index) {
         <shared-message-box [message]="message" />
@@ -15,8 +15,8 @@
     <p-toggleButton
       class="relative bottom-0 right-0"
       (click)="toggleChat()"
-      onLabel="Chat"
-      offLabel="Close chat"
+      onLabel="Close"
+      offLabel="Chat"
     ></p-toggleButton>
   </div>
 
