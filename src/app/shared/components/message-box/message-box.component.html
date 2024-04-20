@@ -1,4 +1,4 @@
-<div class="card flex justify-content-center border-2 border-primary-500">
+<!-- <div class="card flex justify-content-center border-2 border-primary-500">
   <p-card [style]="{ 'width': '400px' }">
 
   <ng-template pTemplate="header">
@@ -9,11 +9,33 @@
     }
   </ng-template>
 
-  <p class="m-0">{{ message!.message.content }}</p>
+  <pre class="m-0 message">{{ message!.message.content }}</pre>
 
   <p class="m-0 text-right text-xs">
     {{ message!.time.hour | number:'2.0' }}:{{ message!.time.minute | number:'2.0' }}
   </p>
 
   </p-card>
-</div>
+</div> -->
+
+@if (message!.message.role==='user') {
+  <div class="bg-primary border-2 border-primary-500 m-1 p-1" [style]="{ 'width': '400px' }">
+    <p class="m-1 text-left">
+      <span class="font-bold">You</span>
+    </p>
+    <pre class="message">{{ message!.message.content }}</pre>
+    <p class="m-0 pr-1 text-right text-xs">
+      {{ message!.time.hour | number:'2.0' }}:{{ message!.time.minute | number:'2.0' }}
+    </p>
+  </div>
+} @else {
+  <div class="bg-yellow-300 text-yellow-900 border-2 border-yellow-500 m-1 p-1" [style]="{ 'width': '400px' }">
+    <p class="m-1 text-left">
+      <span class="font-bold">Assistant</span>
+    </p>
+    <pre class="message">{{ message!.message.content }}</pre>
+    <p class="m-0 pr-1 text-right text-xs">
+      {{ message!.time.hour | number:'2.0' }}:{{ message!.time.minute | number:'2.0' }}
+    </p>
+  </div>
+}

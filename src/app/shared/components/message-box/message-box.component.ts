@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
     CommonModule,
   ],
   templateUrl: './message-box.component.html',
-  styles: ``
+  styleUrl: './message-box.component.css'
 })
 export class MessageBoxComponent {
 
