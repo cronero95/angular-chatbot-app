@@ -1,10 +1,23 @@
-<div>
-  <div>
-    @for (message of messageHistory(); track $index) {
-      <shared-message-box [message]="message" />
-    }
+<div class="flex flex-column">
+
+  <div class="max-h-screen surface-200" [style]="{ 'overflow-y': 'auto' }" #txtChat>
+    <div>
+      @for (message of messageHistory(); track $index) {
+        <shared-message-box [message]="message" />
+      }
+    </div>
+
+    <shared-message-form />
+
   </div>
 
-  <shared-message-form />
+  <div class="flex justify-content-end">
+    <p-toggleButton
+      class="relative bottom-0 right-0"
+      (click)="toggleChat()"
+      onLabel="Chat"
+      offLabel="Close chat"
+    ></p-toggleButton>
+  </div>
 
 </div>
