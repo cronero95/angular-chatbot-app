@@ -1,9 +1,20 @@
-<div class="flex flex-column">
+<div class="flex flex-column" [style]="{'margin-right': '4px', 'margin-bottom': '4px'}">
 
-  <div class="max-h-screen surface-200 border-round-lg" [style]="{ 'overflow-y': 'auto', 'display': 'none' }" #txtChat>
-    <div>
-      @for (message of messageHistory(); track $index) {
+  <div
+    class="max-h-screen surface-200 border-round-lg"
+    [style]="{ 'overflow-y': 'auto', 'display': 'none'}"
+    #txtChat
+  >
+    <div [style]="{'width': '30vw' }">
+      @for (message of messageHistory(); track $index; let last = $last) {
         <shared-message-box [message]="message" />
+        @if(last && message.message.role == 'user') {
+          <div class="bg-yellow-300 text-orange-900 border-2 border-yellow-500 m-1 p-1 border-round-lg" [style]="{ 'width': '400px' }">
+            <p class="m-1 text-center">
+              <span class="font-bold">Loading Answer...</span>
+            </p>
+          </div>
+        }
       }
     </div>
 
