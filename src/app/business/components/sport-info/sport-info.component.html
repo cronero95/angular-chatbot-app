@@ -1,0 +1,31 @@
+<h2 class="text-center text-3xl">{{ sportInformation?.title }}</h2>
+
+<div class="flex flex-wrap flex-row justify-content-center align-items-center">
+  <div class="col-5" >
+    <p class="text-justify text-xl" #txtFirst>
+
+    </p>
+  </div>
+  <img class="col-4" [src]="sportInformation?.images?.image_01" [alt]="'One of the '+sportInformation?.title">
+</div>
+
+<div class="flex flex-wrap flex-row justify-content-center align-items-center">
+  <img class="col-4" [src]="sportInformation?.images?.image_02" [alt]="'One of the '+sportInformation?.title">
+  <div class="col-5">
+    <p class="text-justify text-xl" #txtSecond>
+
+    </p>
+  </div>
+</div>
+
+<div class="flex flex-wrap flex-row justify-content-center align-items-center">
+  <div class="col-8">
+    <p class="text-justify text-xl" #txtThird>
+
+    </p>
+  </div>
+  <div class="flex flex-wrap flex-row justify-content-around align-items-center">
+    <img class="col-6" [src]="sportInformation?.images?.image_03" [alt]="'One of the '+sportInformation?.title">
+    <img class="col-6" [src]="sportInformation?.images?.image_04" [alt]="'One of the '+sportInformation?.title">
+  </div>
+</div>

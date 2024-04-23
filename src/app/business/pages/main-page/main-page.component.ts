@@ -1,9 +1,9 @@
 import { Component, signal } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { CardComponent } from "../../components/card/card.component";
 
 import { CardBody } from '../../../interfaces/card.interface';
-import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
