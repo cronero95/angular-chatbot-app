@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
+
 import { CardModule } from 'primeng/card';
+
 import { CardBody } from '../../../interfaces/card.interface';
 
 @Component({
