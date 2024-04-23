@@ -1,31 +1,43 @@
-<h2 class="text-center text-3xl">{{ sportInformation?.title }}</h2>
+<p-button
+  routerLink="main"
+  label="Go back"
+  icon="pi pi-arrow-left"
+  iconPos="left"
+  [outlined]="true"
+  size="small"
+  [style]="{ 'top': '0vh', 'left': '0vh', 'z-index': '1' }"
+></p-button>
 
-<div class="flex flex-wrap flex-row justify-content-center align-items-center">
-  <div class="col-5" >
-    <p class="text-justify text-xl" #txtFirst>
+<div>
+  <h2 class="text-center text-3xl">{{ sportInformation?.title }}</h2>
 
-    </p>
+  <div class="flex flex-wrap flex-row justify-content-center align-items-center">
+    <div class="col-5" >
+      <p class="text-justify text-xl" #txtFirst>
+
+      </p>
+    </div>
+    <img class="col-4" [src]="sportInformation?.images?.image_01" [alt]="'One of the '+sportInformation?.title">
   </div>
-  <img class="col-4" [src]="sportInformation?.images?.image_01" [alt]="'One of the '+sportInformation?.title">
-</div>
 
-<div class="flex flex-wrap flex-row justify-content-center align-items-center">
-  <img class="col-4" [src]="sportInformation?.images?.image_02" [alt]="'One of the '+sportInformation?.title">
-  <div class="col-5">
-    <p class="text-justify text-xl" #txtSecond>
+  <div class="flex flex-wrap flex-row justify-content-center align-items-center">
+    <img class="col-4" [src]="sportInformation?.images?.image_02" [alt]="'One of the '+sportInformation?.title">
+    <div class="col-5">
+      <p class="text-justify text-xl" #txtSecond>
 
-    </p>
+      </p>
+    </div>
   </div>
-</div>
 
-<div class="flex flex-wrap flex-row justify-content-center align-items-center">
-  <div class="col-8">
-    <p class="text-justify text-xl" #txtThird>
+  <div class="flex flex-wrap flex-row justify-content-center align-items-center">
+    <div class="col-8">
+      <p class="text-justify text-xl" #txtThird>
 
-    </p>
-  </div>
-  <div class="flex flex-wrap flex-row justify-content-around align-items-center">
-    <img class="col-6" [src]="sportInformation?.images?.image_03" [alt]="'One of the '+sportInformation?.title">
-    <img class="col-6" [src]="sportInformation?.images?.image_04" [alt]="'One of the '+sportInformation?.title">
+      </p>
+    </div>
+    <div class="flex flex-wrap flex-row justify-content-around align-items-center">
+      <img class="col-6" [src]="sportInformation?.images?.image_03" [alt]="'One of the '+sportInformation?.title">
+      <img class="col-6" [src]="sportInformation?.images?.image_04" [alt]="'One of the '+sportInformation?.title">
+    </div>
   </div>
 </div>

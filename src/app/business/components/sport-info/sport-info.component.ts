@@ -1,11 +1,17 @@
-import { AfterContentChecked, AfterViewChecked, AfterViewInit, Component, DoCheck, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
+import { ButtonModule } from 'primeng/button';
 
 import { SportInfo } from '../../../interfaces/sport-info.interface';
 
 @Component({
   selector: 'business-sport-info',
   standalone: true,
-  imports: [],
+  imports: [
+    ButtonModule,
+    RouterModule,
+  ],
   templateUrl: './sport-info.component.html',
   styles: ``
 })
