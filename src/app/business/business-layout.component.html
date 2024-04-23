@@ -1,16 +1,5 @@
-<div
-  class="flex m-0 flex-column align-items-center"
-  [style]="{ 'width': '99vw' }"
->
-  <h1 class="" [style]="{ 'margin': '0 0 10px 0' }">San Marcos' courts</h1>
-  <div class="grid justify-content-between align-items-center" [style]="{ 'width': '98vw' }">
-    @for (card of myCards(); track $index) {
-      <div class="col-3">
-        <business-card [cardBody]="card" />
-      </div>
-    }
-  </div>
-</div>
+<router-outlet />
+
 <shared-chatbot
   class="absolute"
   [style]="{ 'bottom': '0vh', 'right': '0vh' }"
