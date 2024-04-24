@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
+import { ToastModule } from 'primeng/toast';
+import { MessageService as PrimeMessageService } from 'primeng/api';
 
 import { MessageService } from '../../../services/message.service';
 
@@ -17,13 +19,18 @@ import { MessageSent } from '../../../interfaces/request.interface';
     InputTextareaModule,
     ButtonModule,
     DividerModule,
+    ToastModule,
   ],
   templateUrl: './message-form.component.html',
-  styles: ``
+  styles: ``,
+  providers: [
+    PrimeMessageService,
+  ]
 })
 export class MessageFormComponent {
   private readonly formBuilder = inject(FormBuilder);
   private readonly messageService = inject(MessageService);
+  private readonly primeMessageService = inject(PrimeMessageService);
 
   public myForm: FormGroup = this.formBuilder.group({
     message: ['', [Validators.required, Validators.minLength(2)]],
@@ -39,11 +46,21 @@ export class MessageFormComponent {
       content: this.myForm.controls['message'].value,
     };
 
-    this.messageService.onMessageSent(messageSent);
+    this.messageService.onMessageSent(messageSent)
+      .subscribe({
+        error: (errorMessage) => {
+          this.primeMessageService.add({ severity: 'error', summary: 'Error', detail: errorMessage });
+        }
+      });
   }
 
   deleteChat(): void {
-    this.messageService.onDeleteChat();
+    this.messageService.onDeleteChat()
+      .subscribe({
+        error: (errorMessage) => {
+          this.primeMessageService.add({ severity: 'error', summary: 'Error', detail: errorMessage });
+        }
+      });
   }
 
   isValidField(field: string): boolean | null {

@@ -3,6 +3,7 @@ import { Message, Role, UserResponse } from '../interfaces/request-response.inte
 import { HttpClient } from '@angular/common/http';
 import { MessageSent } from '../interfaces/request.interface';
 import { environment } from '../../environments/environments';
+import { Observable, catchError, map, tap, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class MessageService {
     this.messageHistorySignal.set(JSON.parse(localStorage.getItem('history')!));
   }
 
-  onMessageSent(userMessage: MessageSent) {
+  onMessageSent(userMessage: MessageSent): Observable<boolean> {
 
     const newMessage: Message = {
       role: Role.User,
@@ -49,21 +50,36 @@ export class MessageService {
       return [...value];
     });
 
-    this.httpClient.post<UserResponse>(`${this.baseUrl}/chat`, body)
-      .subscribe(resp => {
-        this.messageHistorySignal.update(value => {
-          value.push(resp);
-          return [...value];
-        });
-      })
+    return this.httpClient.post<UserResponse>(`${this.baseUrl}/chat`, body)
+      .pipe(
+        tap(resp => {
+          this.messageHistorySignal.update(value => {
+            value.push(resp);
+            return [...value];
+          });
+        }),
+        map(() => {
+          return true
+        }),
+        catchError( err => {
+          throw 'There is a problem with the backend ' + (err.error.message||'');
+        }),
+      );
   }
 
-  onDeleteChat(): void {
+  onDeleteChat(): Observable<boolean> {
     this.messageHistorySignal.set([]);
 
     localStorage.removeItem('history');
 
-    this.httpClient.delete(`${this.baseUrl}/chat`)
-      .subscribe();
+    return this.httpClient.delete(`${this.baseUrl}/chat`)
+      .pipe(
+        map(() =>{
+          return true;
+        }),
+        catchError( err => {
+          throw 'There is a problem with the backend ' + (err.error.message||'');
+        }),
+      );
   }
 }
