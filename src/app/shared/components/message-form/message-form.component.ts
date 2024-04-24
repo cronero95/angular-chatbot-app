@@ -52,6 +52,8 @@ export class MessageFormComponent {
           this.primeMessageService.add({ severity: 'error', summary: 'Error', detail: errorMessage });
         }
       });
+
+    this.myForm.reset();
   }
 
   deleteChat(): void {
