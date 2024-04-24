@@ -1,8 +1,8 @@
 <div class="flex flex-column" [style]="{'margin-right': '4px', 'margin-bottom': '4px'}">
 
   <div
-    class="max-h-screen surface-200 border-round-lg"
-    [style]="{ 'overflow-y': 'auto', 'display': 'none'}"
+    class="surface-200 border-round-lg"
+    [style]="{ 'overflow-y': 'auto', 'display': 'none', 'height': '90vh'}"
     #txtChat
   >
     <div [style]="{'width': '30vw' }">
@@ -28,6 +28,7 @@
       (click)="toggleChat()"
       onLabel="Close"
       offLabel="Chat"
+      [style]="{'margin-right': '15px' }"
     ></p-toggleButton>
   </div>
 
