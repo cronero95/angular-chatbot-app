@@ -17,7 +17,6 @@ export class MessageService {
 
   public historyChangeEffect = effect(() => {
     localStorage.setItem('history', JSON.stringify(this.messageHistorySignal()));
-    console.log(this.messageHistorySignal());
   })
 
   constructor() {

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal} from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { InputTextareaModule } from 'primeng/inputtextarea';
@@ -10,6 +10,7 @@ import { MessageService as PrimeMessageService } from 'primeng/api';
 import { MessageService } from '../../../services/message.service';
 
 import { MessageSent } from '../../../interfaces/request.interface';
+import { Observable, catchError } from 'rxjs';
 
 @Component({
   selector: 'shared-message-form',
@@ -32,11 +33,15 @@ export class MessageFormComponent {
   private readonly messageService = inject(MessageService);
   private readonly primeMessageService = inject(PrimeMessageService);
 
+  public sent = signal<boolean>(true);
+
   public myForm: FormGroup = this.formBuilder.group({
     message: ['', [Validators.required, Validators.minLength(2)]],
   });
 
   sendMessage(): void {
+    this.sent.set(false);
+
     if(this.myForm.invalid) {
       this.myForm.markAllAsTouched();
       return
@@ -48,6 +53,7 @@ export class MessageFormComponent {
 
     this.messageService.onMessageSent(messageSent)
       .subscribe({
+        next: () => this.sent.set(true),
         error: (errorMessage) => {
           this.primeMessageService.add({ severity: 'error', summary: 'Error', detail: errorMessage });
         }
@@ -57,6 +63,8 @@ export class MessageFormComponent {
   }
 
   deleteChat(): void {
+    this.sent.set(true);
+
     this.messageService.onDeleteChat()
       .subscribe({
         error: (errorMessage) => {

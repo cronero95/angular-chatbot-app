@@ -22,12 +22,22 @@
       </div>
 
       <div class="card flex justify-content-center">
-        <p-button
+        @if (sent()) {
+          <p-button
           type="submit"
           label="Send message"
           icon="pi pi-send"
           iconPos="right"
-        ></p-button>
+          ></p-button>
+        } @else {
+          <p-button
+          type="submit"
+          label="Send message"
+          icon="pi pi-send"
+          iconPos="right"
+          [disabled]="true"
+          ></p-button>
+        }
         <p-divider layout="vertical"></p-divider>
         <p-button
           (click)="deleteChat()"
